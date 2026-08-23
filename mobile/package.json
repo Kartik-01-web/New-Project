@@ -1,0 +1,30 @@
+{
+  "name": "edgesync-mobile",
+  "version": "1.0.0",
+  "main": "expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios"
+  },
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "@react-native-community/netinfo": "12.0.1",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
+    "expo": "^57.0.15",
+    "expo-location": "~57.0.12",
+    "expo-status-bar": "~57.0.1",
+    "firebase": "^10.12.3",
+    "react": "19.2.3",
+    "react-native": "0.86.2",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@types/react": "^19.2.18",
+    "@types/uuid": "^9.0.8",
+    "typescript": "~6.0.3"
+  },
+  "private": true
+}

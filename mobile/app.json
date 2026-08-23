@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "EdgeSync",
+    "slug": "edgesync",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.edgesync.app" },
+    "android": { "package": "com.edgesync.app" }
+  }
+}
