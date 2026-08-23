@@ -1,0 +1,87 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper: authenticated
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    // Simplified for demo — production should use custom claims / role docs
+    match /organizations/{orgId} {
+      allow read: if isAuth();
+      allow write: if isAuth(); // tighten to ADMIN in production
+    }
+
+    match /organizationSettings/{orgId} {
+      allow read: if isAuth();
+      allow write: if false; // only via Cloud Functions
+    }
+
+    match /deliveryEvents/{eventId} {
+      allow read: if isAuth();
+      allow create: if isAuth(); // idempotent writes preferred via Functions
+      allow update, delete: if false; // immutable
+    }
+
+    match /packages/{pkgId} {
+      allow read: if isAuth();
+      allow write: if isAuth();
+    }
+
+    match /canonicalStates/{id} {
+      allow read: if isAuth();
+      allow write: if false; // only via Cloud Functions
+    }
+
+    match /reconciliationDecisions/{id} {
+      allow read: if isAuth();
+      allow write: if false;
+    }
+
+    match /manualCorrections/{id} {
+      allow read: if isAuth();
+      allow write: if false;
+    }
+
+    match /operationalIncidents/{id} {
+      allow read: if isAuth();
+      allow create: if isAuth();
+      allow update: if isAuth();
+    }
+
+    match /auditLogs/{id} {
+      allow read: if isAuth();
+      allow write: if false; // system only
+    }
+
+    match /deliveryTypes/{id} {
+      allow read: if isAuth();
+      allow write: if false;
+    }
+
+    match /eventTypes/{id} {
+      allow read: if isAuth();
+      allow write: if false;
+    }
+
+    match /ruleProfiles/{id} {
+      allow read: if isAuth();
+      allow write: if false;
+    }
+
+    match /drivers/{id} {
+      allow read: if isAuth();
+      allow write: if isAuth();
+    }
+
+    match /devices/{id} {
+      allow read: if isAuth();
+      allow write: if isAuth();
+    }
+
+    match /users/{id} {
+      allow read: if isAuth();
+      allow write: if false;
+    }
+  }
+}
